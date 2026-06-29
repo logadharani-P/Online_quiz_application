@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            background-image: url("quiz.jpg");
+            background-size: cover;
+
+        }
+        .box{
+            width: 250px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0,1);
+            background-color: white;
+
+        }
+         .container {
+            display:block;
+         }
+         .box img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+
+         }  
+        .searchbar {
+            margin-top: 20px;
+            text-align: center;
+            outline: none;
+            
+        
+        }
+        .searchbar input {
+            font-size: 15px;
+            padding: 10px; width: 500px;
+        }
+        .box:hover{
+            cursor: pointer;
+            background-color: rgb(119, 121, 117);
+        }
+        
+          </style>
+
+          <script>
+            function open0() {
+                window.location.href="page0.html"
+            }
+
+            function open1(){
+                window.location.href="page1.html"
+            }
+
+            function open2(){
+                window.location.href="page2.html"
+            }
+
+            function open3(){
+                window.location.href="page3.html"
+            }
+
+            function open4() {
+                window.location.href="page4.html"
+            }
+
+            function open5() {
+                window.location.href="page5.html"
+            }
+          </script>
+
+    
+</head>
+<body>
+    <div class="searchbar">
+        <input type="search" placeholder="🔍search"><br><br>
+
+    </div>
+
+    <hr>
+    <div class="container">
+    <div class="box" onclick="open0()">
+        <img src="chemistry-laboratory-experiment-tool-icon-vector.jpg"><br>
+        <p>Chemistry</p>
+    </div>
+    
+    <div class="box" onclick="open1()">
+        <img src="physics.jpg"><br>
+        <p>Physics</p>
+    </div>
+
+    <div class="box" onclick="open2()">
+        <img src="botany.jpg"><br>
+        <p>Botany</p>
+    </div>
+
+    <div class="box">
+        <img src="zoology.jpg" onclick="open3()"><br>
+        <p>Zoology</p>
+    </div>
+
+    <div class="box" onclick="open4()">
+        <img src="maths.jpg"><br>
+        <p>Maths</p>
+    </div>
+    
+    <div class="box" onclick="open5()">
+        <img src="GK.jpg"><br>
+        <p>General Knowledge</p>
+    </div>
+    <hr>
+    </div>
+</body>
+</html>
