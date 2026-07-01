@@ -31,7 +31,7 @@
             position: relative;
             margin-top: 70px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url("gradient-abstract-background-with-different-shapes_23-2149110297.avif");
+            background-image: url("/static/gradient-abstract-background-with-different-shapes_23-2149110297.avif");
             border: 1px solid #fee;
             border-radius: 12px;
         }
@@ -49,7 +49,7 @@
             cursor: pointer;
         }
         body {
-            background-image: url("quiz.jpg");
+            background-image: url("/static/quiz.jpg");
             background-size: cover;
         }
         label {
@@ -61,6 +61,38 @@
             padding: 7px; width: 170px;
         }
     </style>
+    <script>
+        function change() {
+            let name=document.getElementById("name").value.trim();
+            let email=document.getElementById("email").value.trim();
+            let password=document.getElementById("password").value;
+
+            if (name=="" || email=="" || password==""){
+                alert("Please fill all fields.");
+                return;
+            }        
+            let emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(!emailpattern.test(email)){
+                alert("Please enter a valid email");
+                return;
+            }
+
+            if(password.length<6){
+                alert("Password must contain atleast 6 characters.");
+                return;
+
+            }
+            localStorage.setItem("name",name);
+            localStorage.setItem("email",email);
+            localStorage.setItem("password",password);
+            alert("Login successful!");
+            window.location.href="/dashboard";
+
+        }
+
+        
+    </script>
      
 </head>
 <body>
@@ -68,12 +100,12 @@
         <hr>
         <h2>Online Quiz Application</h2><br>
         <label> Name </label><br><br>
-        <input type="text" name="name" placeholder="Enter your name" ><br><br>
+        <input type="text" id="name" placeholder="Enter your name" ><br><br>
         <label> Email</label><br><br>
-        <input type="email" name="email" placeholder="Enter your email"><br><br>
+        <input type="email" id="email" placeholder="Enter your email"><br><br>
         <label> Password </label><br><br>
-        <input type="password" name="password" placeholder="Enter your password"><br><br><br>
-        <button href="dashboard.html">Submit</button>
+        <input type="password" id="password" placeholder="Enter your password"><br><br><br>
+        <button onclick="change()">Login</button>
         <hr>
     </div>
     
