@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chemistry</title>
+    <title id="testname">chemistry</title>
     <h3>All the best✨</h3>
 
     <style>
@@ -39,8 +39,8 @@
 
         }
         body{
-            background-image: url("bg.jpg");
-            background-size: contain;
+            background-image: url("/static/bg.jpg");
+            background-size: cover;
         }
         .div{
             box-sizing: border-box;
@@ -61,25 +61,91 @@
             color: black;
         }
     </style>
+    
+    <script>
+    function submit() {
 
+     const answers = {
+        q1: "A",
+        q2: "C",
+        q3: "B",
+        q4: "D",
+        q5: "B",
+        q6: "B",
+        q7: "B",
+        q8: "B",
+        q9: "C",
+        q10: "D"
+    };
+        let score = 0;
+
+    for (let question in answers) {
+
+        let selected = document.querySelector(
+            `input[name="${question}"]:checked`
+        );
+
+        if (selected && selected.value === answers[question]) {
+            score++;
+        }
+
+    }
+    let name = localStorage.getItem("name");
+    let test = "Chemistry Quiz";
+
+    fetch("http://127.0.0.1:5000/save", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: name,
+            test_name: test,
+            score: score
+        })
+    })
+
+    .then(response => response.json())
+    .then(data => {
+        console.log("Saved to View results:",data);
+
+        alert(
+            `Participant : ${name}
+Test : ${test}
+Score : ${score}/10`
+    );
+    window.location.href = "/result"
+     
+    })
+    .catch(error => {
+        console.error("Error:",error);
+        alert("Failed to save result!");
+    });
+
+    }
+
+    
+    </script>
+
+
+  
 </head>
 <body>
-
 <div class="container">
     <div class="box">
         <form>
         <p>Which of the following is dependent on temperature?</p>
         <label>
-        <input type="radio" name="q1" value="molarity">Molarity</input> 
+        <input type="radio" name="q1" value="A">Molarity</input> 
         </label>
         <label>
-        <input type="radio" name="q1" value="mole fraction">Mole fraction</input>
+        <input type="radio" name="q1" value="B">Mole fraction</input>
         </label>
         <label>
-        <input type="radio" name="q1" value="weight percentage">Weight percentage</input>
+        <input type="radio" name="q1" value="C">Weight percentage</input>
         </label>
         <label>
-        <input type="radio" name="q1" value="molality"> Molality</input>
+        <input type="radio" name="q1"value="D"> Molality</input>
         </label>
         </form>
     </div>
@@ -89,16 +155,16 @@
         <form>
         <p>Pure water can be obtained from sea water by_______</p>
         <label>
-        <input type="radio" name="q2" >Centrifugation</input> 
+        <input type="radio" name="q2" value="A">Centrifugation</input> 
         </label>
         <label>
-        <input type="radio" name="q2" >Plasmolysis</input>
+        <input type="radio" name="q2" value="B">Plasmolysis</input>
         </label>
         <label>
-        <input type="radio" name="q2">Reverse osmosis</input>
+        <input type="radio" name="q2" value="C">Reverse osmosis</input>
         </label>
         <label>
-        <input type="radio" name="q2">Sedimentation</input>
+        <input type="radio" name="q2" value="D">Sedimentation</input>
         </label>
         </form>
     </div>
@@ -108,16 +174,16 @@
         <form>
         <p>To protect iron against corrosion, the most durable metal plating on it,is_____</p>
         <label>
-        <input type="radio" name="q3">Copper plating</input> 
+        <input type="radio" name="q3" value="A">Copper plating</input> 
         </label>
         <label>
-        <input type="radio" name="q3">zinc plating</input>
+        <input type="radio" name="q3" value="B">zinc plating</input>
         </label>
         <label>
-        <input type="radio" name="q3">Nickel plating</input>
+        <input type="radio" name="q3" value="C">Nickel plating</input>
         </label>
         <label>
-        <input type="radio" name="q3">Tin plating</input>
+        <input type="radio" name="q3" value="D">Tin plating</input>
         </label>
         </form>
     </div>
@@ -129,16 +195,16 @@
         <form>
         <p>Phosgene is a common name for </p>
         <label>
-        <input type="radio" name="q4">phosphoryl chloride</input> 
+        <input type="radio" name="q4" value="A">phosphoryl chloride</input> 
         </label>
         <label>
-        <input type="radio" name="q4">thionyl chloride</input>
+        <input type="radio" name="q4" value="B">thionyl chloride</input>
         </label>
         <label>
-        <input type="radio" name="q4">carbon dioxide and phosphine</input>
+        <input type="radio" name="q4" value="C">carbon dioxide and phosphine</input>
         </label>
         <label>
-        <input type="radio" name="q4">carbonyl chloride</input>
+        <input type="radio" name="q4" value="D">carbonyl chloride</input>
         </label>
         </form>
     </div>
@@ -149,16 +215,16 @@
         <form>
         <p>How many isomers of C5H11OH will be primary alcohols?</p>
         <label>
-        <input type="radio" name="q5">5</input> 
+        <input type="radio" name="q5" value="A">5</input> 
         </label>
         <label>
-        <input type="radio" name="q5">4</input>
+        <input type="radio" name="q5" value="B">4</input>
         </label>
         <label>
-        <input type="radio" name="q5">3</input>
+        <input type="radio" name="q5" value="C">3</input>
         </label>
         <label>
-        <input type="radio" name="q5">2</input>
+        <input type="radio" name="q5" value="D">2</input>
         </label>
         </form>
     </div>
@@ -170,16 +236,16 @@
         <form>
         <p>Which of the following compounds gives benzoic acid on hydrolysis? </p>
         <label>
-        <input type="radio" name="q6">chlorobenzene</input> 
+        <input type="radio" name="q6" value="A">chlorobenzene</input> 
         </label>
         <label>
-        <input type="radio" name="q6">benzoyl chloride</input>
+        <input type="radio" name="q6" value="B">benzoyl chloride</input>
         </label>
         <label>
-        <input type="radio" name="q6">chlorophenol</input>
+        <input type="radio" name="q6" value="C">chlorophenol</input>
         </label>
         <label>
-        <input type="radio" name="q6">chlorotoluene</input>
+        <input type="radio" name="q6" value="D">chlorotoluene</input>
         </label>
         </form>
     </div>
@@ -189,16 +255,16 @@
         <form>
         <p>Basicity of orthophosphoric acid is___</p>
         <label>
-        <input type="radio" name="q7">2</input> 
+        <input type="radio" name="q7" value="A">2</input> 
         </label>
         <label>
-        <input type="radio" name="q7">3</input>
+        <input type="radio" name="q7" value="B">3</input>
         </label>
         <label>
-        <input type="radio" name="q7">4</input>
+        <input type="radio" name="q7" value="C">4</input>
         </label>
         <label>
-        <input type="radio" name="q7">5</input>
+        <input type="radio" name="q7" value="D">5</input>
         </label>
         </form>
     </div>
@@ -208,16 +274,16 @@
         <form>
         <p>Oxygen will directly react with each of the following elements except</p>
         <label>
-        <input type="radio" name="q8">P</input> 
+        <input type="radio" name="q8" value="A">P</input> 
         </label>
         <label>
-        <input type="radio" name="q8">Cl</input>
+        <input type="radio" name="q8" value="B">Cl</input>
         </label>
         <label>
-        <input type="radio" name="q8">Na</input>
+        <input type="radio" name="q8" value="C">Na</input>
         </label>
         <label>
-        <input type="radio" name="q8">S</input>
+        <input type="radio" name="q8" value="D">S</input>
         </label>
         </form>
     </div>
@@ -226,16 +292,16 @@
         <form>
         <p>The compound formed when malonic acid id heated with urea is</p>
         <label>
-        <input type="radio" name="q9">cinnamic acid</input> 
+        <input type="radio" name="q9" value="A">cinnamic acid</input> 
         </label>
         <label>
-        <input type="radio" name="q9">butyric acid</input>
+        <input type="radio" name="q9" value="B">butyric acid</input>
         </label>
         <label>
-        <input type="radio" name="q9">barbituric acid</input>
+        <input type="radio" name="q9" value="C">barbituric acid</input>
         </label>
         <label>
-        <input type="radio" name="q9">crotonic acid</input>
+        <input type="radio" name="q9" value="D">crotonic acid</input>
         </label>
         </form>
     </div>
@@ -244,23 +310,23 @@
         <form>
         <p>An example of biopolymer is</p>
         <label>
-        <input type="radio" name="q10">teflon</input> 
+        <input type="radio" name="q10" value="A">teflon</input> 
         </label>
         <label>
-        <input type="radio" name="q10">neoprene</input>
+        <input type="radio" name="q10" value="B">neoprene</input>
         </label>
         <label>
-        <input type="radio" name="q10">nylon-6,6</input>
+        <input type="radio" name="q10" value="C">nylon-6,6</input>
         </label>
         <label>
-        <input type="radio" name="q10">DNA</input>
+        <input type="radio" name="q10" value="D">DNA</input>
         </label>
         </form>
     </div>
     <br><br>
-    <div class="button">
-        <button>submit</button>
-    </div>
+
+        <button onclick="submit()">submit</button>
+    
 </div>
 
 
